@@ -1,0 +1,162 @@
+https://www.tmsiti.uz/ ( Texnik me’yorlash va standartlashtirish ilmiy-tadqiqot instituti) web saytning backend qismi uchun barcha kodlarni FastAPI da modullarga bo’lgan holda to'liq va mukammal qilib yozib ber, sayt 3 ta tilda bo'lishi kerak, admin panel va qidiruv(search) ham bo'lishi kerak, malumotlar bazasi SQLite, barcha malumotlarni faqat admin va moderator o’zgartira olsin (CRUD amallarini), moderatorga ro’yxatdan o’tishga faqat admin ruxsat bersin,admin va foydalanuvchi endpointlari alohida bo’lsin,  strukturani tuzishdan boshla! Yuqoridagi rasmda saytning bosh sahifasi mavjud, web saytning tuzilishida esa menyular va submenyularda qanday malumotlar borligi izohlab o’tilgan.
+WEB SAYTNING TUZILISHI:
+Bosh sahifa --- https://www.tmsiti.uz/ (ushbu sahifada rasmlar, Menu, Shaharsozlik normalari va qoidalari-https://www.tmsiti.uz/shnq, Standartlar-https://www.tmsiti.uz/standards va Yangilik-https://www.tmsiti.uz/news bo’limlari mavjud).
+Menu: Institut, Me’yoriy hujjatlar, Faoliyat, Xabarlar, Bog’lanish.
+Institut:
+Institut haqida---https://www.tmsiti.uz/about (institut haqida malumot va guvohnoma yuklash uchun pdf hujjat).
+Rahbariyat---https://www.tmsiti.uz/management (rahbarlarning to’liq ism sharifi, rasmlari,lavozimlari, malumotlari,telefon raqam,email, qabul kunlari, agar rasmi bo’lmsa yoki qo’yilmagan bolmasa default image bo’lishi kerak).
+Tashkiliy tuzilma---https://www.tmsiti.uz/structure (bo’limlarning strukturasi).
+Tarkibiy bo'linmalar---https://www.tmsiti.uz/structural-divisions (xodimlarning to’liq ism sharifi,rasmlari, lavozimlari, malumotlari,telefon raqam,email, agar rasmi bo’lmsa yoki qo’yilmagan bolmasa default image bo’lishi kerak).
+Vakansiyalar---https://www.tmsiti.uz/vacancies (vakansiyalar qaysi bo’limga, qanday lavozimga, talablar va vakansiya holati ko’rsatilsin).
+Me’yoriy hujjatlar:
+Qonun, qaror va farmonlar--- https://www.tmsiti.uz/laws (tartib raqami, nomi, qabul qilingan vaqti, kuchga kirish vaqti, qabul qilgan organ va https://lex.uz/ ga link).
+Shaharsozlik normalari va qoidalari-https://www.tmsiti.uz/shnq (hujjat shifri, nomi va hujjatning https://lex.uz/ saytidagi linki, sahifaga paginatsiya).
+Standartlar-https://www.tmsiti.uz/standards (hujjatning to’liq nomi va pdf shakli, sahifaga paginatsiya).
+Qurilish reglamentlari-https://www.tmsiti.uz/building-regulations (hujjat nomeri, belgilanishi, nomi va pdf shakli).
+Smeta-resurs normalari-https://www.tmsiti.uz/srn (hujjat nomeri, shnq raqami, shnq nomi).
+Ma'lumotnoma-https://www.tmsiti.uz/reference (malumotnoma nomeri, nomi va pdf shakli).
+Faoliyat:
+Menejment tizimlarini sertifikatlashtirish organi-https://www.tmsiti.uz/management-system (organ haqida malumot va pdf hujjat yuklash imkoniyati).
+Laboratoriya-(ushbu sahifada KSL.uz ga havola)
+Xabarlar:
+E’lonlar---https://www.tmsiti.uz/announcement (e’lon sanasi, nomi va rasmi yoki videosi).
+Yangilik---https://www.tmsiti.uz/news yangilik sanasi, nomi va rasmi yoki videosi).
+Korrupsiyaga qarshi kurashish-https://www.tmsiti.uz/anti-corruption (korrupsiyaga qarsi kurash haqida malumot va bog’lanish uchun kontakt malumotlari).
+Bog’lanish:---https://www.tmsiti.uz/contact (ushbu sahifada saytning lokatsiyasi, email, telefon raqami hamda foydalanuvchilar uchun murojaat yubora olish imkoniyati ya’ni foydalanuvhi to’liq ism sharifi, emaili, raqami va murojaat matni, murojaatlarni admin tahlil qilishi kerak).
+🔧 Loyihaning Asosiy Talablari:
+Til: FastAPI
+
+Ma'lumotlar bazasi: SQLite
+
+Til: 3 tilda (uz, ru, en)
+
+Admin panel (Tortoise yoki FastAPI Admin bo‘lishi mumkin, lekin kodda o‘zimiz yozamiz)
+
+CRUD: faqat admin/moderator uchun
+
+Moderatorga ro‘yxatdan o‘tishga faqat admin ruxsat beradi
+
+Auth: JWT token
+
+Foydalanuvchi, admin va moderator uchun alohida endpointlar
+
+Qidiruv (search)
+
+Multilingual content
+
+Fayl yuklash (PDF, image)
+
+Frontend bilan ishlash uchun tayyor API
+Loyixa strukturasi:
+tmsiti_backend/
+│
+├── app/
+│   ├── main.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── security.py
+│   ├── db/
+│   │   ├── database.py
+│   │   └── models/
+│   │       ├── init.py
+│   │       ├── user.py
+│   │       ├── news.py
+│   │       ├── regulations.py
+│   │       ├── institute.py
+│   │       ├── activity.py
+│   │       ├── contact.py
+│   ├── schemas/
+│   │   ├── user.py
+│   │   ├── news.py
+│   │   ├── regulations.py
+│   │   ├── institute.py
+│   │   ├── activity.py
+│   │   ├── contact.py
+│   ├── api/
+│   │   └── v1/
+│   │       ├── init.py
+│   │       ├── user.py
+│   │       ├── auth.py
+│   │       ├── news.py
+│   │       ├── regulations.py
+│   │       ├── institute.py
+│   │       ├── activity.py
+│   │       ├── contact.py
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   └── utils.py
+│   ├── middlewares/
+│   │   └── language.py
+│   ├── localization/
+│   │   ├── uz.json
+│   │   ├── ru.json
+│   │   └── en.json
+│
+├── static/
+│   ├── uploads/
+│   └── default/
+│       └── no-image.png
+├── create_tables.py
+├── requirements.txt
+└── README.md
+├── .env
+├── Dockerfile
+
+✍️ Key Modul Tavsifi
+
+db/models/user.py Foydalanuvchi (admin, moderator, oddiy)
+JWT autentifikatsiya
+
+Ruxsatlarni ajratish
+
+is_active, is_moderator, is_admin maydonlar
+
+db/models/news.py Yangiliklar, e’lonlar
+Rasm/video yuklash
+
+Sana, sarlavha, matn, tilda ajratilgan
+
+db/models/regulations.py Qonun, qaror va farmonlar
+Shaharsozlik normalari
+
+Standartlar
+
+Qurilish reglamentlari
+
+PDF yuklash + link
+
+db/models/institute.py Institut haqida, rahbariyat, bo‘linmalar, vakansiyalar
+Har bir modellar 3 tilda kontent
+
+db/models/activity.py Sertifikatlash organi
+Laboratoriya havolasi (KSL.uz)
+
+db/models/contact.py Foydalanuvchi murojaatlari (full_name, phone, email, message)
+Admin/moderator ko‘radi
+
+🔐 Avtorizatsiya:
+JWT (Access + Refresh token)
+
+Foydalanuvchi login, register (faqat user)
+
+Moderatorni faqat admin yaratadi
+
+Endpointlar: /admin/, /moderator/, /user/*
+
+🌍 Ko‘p tillilik
+Middleware orqali Accept-Language orqali aniqlanadi
+
+Har bir matn uz, ru, en sifatida JSON ichida yoki ustunlar bilan saqlanadi
+
+Lokallashgan fayllar (localization/uz.json, ...)
+
+🔎 Qidiruv
+?search= parametri orqali (yangiliklar, qonunlar, rahbariyat, bo‘limlar, hujjatlar bo‘yicha)
+
+📤 Fayl Yuklash
+Image: Rahbariyat, e’lonlar, xodimlar
+
+PDF: Standartlar, reglamentlar, institut haqida
+
+📌 Paginatsiya
+limit, offset asosida barcha ro‘yxatlarni ajratish
