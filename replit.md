@@ -12,9 +12,10 @@ Preferred communication style: Simple, everyday language.
 
 ### Backend Framework
 - **FastAPI**: Modern, high-performance web framework for building APIs
-- **Python 3.x**: Programming language
+- **Python 3.11+**: Programming language
 - **SQLAlchemy**: ORM for database operations
-- **SQLite**: Lightweight database for development (can be migrated to PostgreSQL in production)
+- **SQLite**: Lightweight database for development and production
+- **Pydantic v2**: Data validation and settings management
 
 ### API Structure
 - RESTful API design with versioned endpoints (`/api/v1/`)
@@ -92,9 +93,16 @@ Preferred communication style: Simple, everyday language.
 - **python-dotenv**: Environment variable management
 
 ### Database
-- **SQLite**: Default database (can be switched to PostgreSQL)
-- Auto-creation of tables on startup
+- **SQLite**: Default database with auto-creation of tables
+- Database initialization script with admin user setup
 - Migration support through SQLAlchemy
+
+### Deployment Files
+- **README.md**: Comprehensive documentation with setup instructions
+- **Dockerfile**: Container configuration for deployment
+- **docker-compose.yml**: Multi-service container orchestration
+- **run.py**: Startup script with proper environment configuration
+- **requirements_list.txt**: Python dependencies list
 
 ## Deployment Strategy
 

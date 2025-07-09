@@ -36,7 +36,7 @@ class Law(LawBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UrbanNormBase(BaseModel):
     document_code: str
@@ -62,7 +62,7 @@ class UrbanNorm(UrbanNormBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class StandardBase(BaseModel):
     name_uz: str
@@ -85,7 +85,7 @@ class Standard(StandardBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class BuildingRegulationBase(BaseModel):
     document_number: str
@@ -112,7 +112,7 @@ class BuildingRegulation(BuildingRegulationBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SmetaResourceNormBase(BaseModel):
     document_number: str
@@ -138,7 +138,7 @@ class SmetaResourceNorm(SmetaResourceNormBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ReferenceBase(BaseModel):
     reference_number: str
@@ -163,4 +163,4 @@ class Reference(ReferenceBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True

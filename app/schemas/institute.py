@@ -23,7 +23,7 @@ class About(AboutBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ManagementBase(BaseModel):
     full_name_uz: str
@@ -70,7 +70,7 @@ class Management(ManagementBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class StructureBase(BaseModel):
     content_uz: str
@@ -92,7 +92,7 @@ class Structure(StructureBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class StructuralDivisionBase(BaseModel):
     full_name_uz: str
@@ -139,7 +139,7 @@ class StructuralDivision(StructuralDivisionBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class VacancyBase(BaseModel):
     position_uz: str
@@ -183,4 +183,4 @@ class Vacancy(VacancyBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True

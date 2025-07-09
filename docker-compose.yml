@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  tmsiti-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./tmsiti.db
+      - SECRET_KEY=your-super-secret-key-change-this-in-production
+      - ADMIN_PASSWORD=admin123
+      - DEBUG=false
+    volumes:
+      - ./static:/app/static
+      - ./tmsiti.db:/app/tmsiti.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add PostgreSQL for production
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: tmsiti
+  #     POSTGRES_USER: tmsiti
+  #     POSTGRES_PASSWORD: tmsiti_password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+  # Optional: Add Redis for caching
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   restart: unless-stopped
+
+  # Optional: Add Nginx for reverse proxy
+  # nginx:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #     - ./ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - tmsiti-backend
+  #   restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local

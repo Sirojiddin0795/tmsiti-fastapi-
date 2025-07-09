@@ -33,7 +33,7 @@ class News(NewsBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AnnouncementBase(BaseModel):
     title_uz: str
@@ -64,4 +64,4 @@ class Announcement(AnnouncementBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True

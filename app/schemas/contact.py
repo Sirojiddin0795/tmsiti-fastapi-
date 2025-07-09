@@ -26,7 +26,7 @@ class Contact(ContactBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AntiCorruptionBase(BaseModel):
     content_uz: str
@@ -58,4 +58,4 @@ class AntiCorruption(AntiCorruptionBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -23,7 +23,7 @@ class ManagementSystem(ManagementSystemBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class LaboratoryBase(BaseModel):
     ksl_link: Optional[str] = "https://ksl.uz"
@@ -47,4 +47,4 @@ class Laboratory(LaboratoryBase):
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True

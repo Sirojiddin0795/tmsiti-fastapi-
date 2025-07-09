@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # Database
-    database_url: str = os.getenv("DATABASE_URL", "sqlite:///./tmsiti.db")
+    database_url: str = "sqlite:///./tmsiti.db"
     
     # Security
     secret_key: str = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
